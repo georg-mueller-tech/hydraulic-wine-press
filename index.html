@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Georg Müller · Projects</title>
+<meta name="description" content="Engineering projects by Georg Müller, mechanical engineering student at the Technical University of Munich.">
+<style>
+@font-face{font-family:"Plex Sans";src:url(assets/fonts/ibm-plex-sans-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Plex Sans";src:url(assets/fonts/ibm-plex-sans-latin-400-italic.woff2) format("woff2");font-weight:400;font-style:italic;font-display:swap}
+@font-face{font-family:"Plex Sans";src:url(assets/fonts/ibm-plex-sans-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:"Plex Sans";src:url(assets/fonts/ibm-plex-sans-latin-600-normal.woff2) format("woff2");font-weight:600;font-style:normal;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(assets/fonts/ibm-plex-mono-latin-400-normal.woff2) format("woff2");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Plex Mono";src:url(assets/fonts/ibm-plex-mono-latin-500-normal.woff2) format("woff2");font-weight:500;font-style:normal;font-display:swap}
+
+:root{
+  --ink:#15171c;
+  --ink-2:#4a4f59;
+  --ink-3:#7b808a;
+  --rule:#15171c;
+  --hair:#d9dbe0;
+  --paper:#ffffff;
+  --tint:#f4f5f7;
+  --accent:#c4261d;
+  --sans:"Plex Sans",-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;
+  --mono:"Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;font-feature-settings:"kern","liga"}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration-thickness:1px;text-underline-offset:3px}
+a:hover{color:var(--accent)}
+.sheet{max-width:1080px;margin:0 auto;padding:40px 32px 56px}
+
+/* title block */
+.titleblock{display:grid;grid-template-columns:1.6fr 1fr 1fr;border:1.5px solid var(--rule)}
+.titleblock>div{padding:12px 16px;border-left:1px solid var(--rule)}
+.titleblock>div:first-child{border-left:0}
+.tb-label{font-family:var(--mono);font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);display:block;margin-bottom:4px}
+.tb-name{font-size:30px;font-weight:600;letter-spacing:-.01em;line-height:1.1}
+.tb-val{font-size:14px;line-height:1.4}
+
+/* project header */
+.proj{margin-top:44px}
+.proj-no{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);display:flex;gap:10px;align-items:center}
+.proj-no::after{content:"";flex:1;height:1px;background:var(--rule)}
+h1{font-size:44px;line-height:1.05;letter-spacing:-.02em;font-weight:600;margin:14px 0 8px}
+.meta{font-family:var(--mono);font-size:13px;color:var(--ink-2);margin:0}
+.meta span{white-space:nowrap}
+.meta span+span::before{content:"·";margin:0 8px 0 0;color:var(--ink-3)}
+
+/* intro */
+.intro{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;margin-top:28px;align-items:start}
+.hero{margin:0}
+.hero img{width:100%;border:1px solid var(--hair)}
+.lead p{margin:0 0 14px;font-size:17px}
+.lead p.ctx{font-size:14px;color:var(--ink-2)}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1.5px solid var(--rule);border-bottom:1px solid var(--rule);margin:22px 0}
+.stat{padding:12px 10px 12px 0}
+.stat+.stat{border-left:1px solid var(--hair);padding-left:12px}
+.stat b{display:block;font-family:var(--mono);font-weight:500;font-size:22px;letter-spacing:-.01em;line-height:1.15}
+.stat small{display:block;font-size:12.5px;color:var(--ink-2);line-height:1.35;margin-top:4px}
+h2{font-family:var(--mono);font-weight:500;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--ink)}
+.did{list-style:none;margin:0;padding:0;columns:2;column-gap:24px}
+.did li{font-size:14.5px;padding:5px 0 5px 18px;position:relative;break-inside:avoid;border-bottom:1px solid var(--hair)}
+.did li::before{content:"";position:absolute;left:2px;top:13px;width:7px;height:7px;border:1.5px solid var(--accent);border-radius:50%}
+
+/* design */
+.block{margin-top:44px}
+.design{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1.5px solid var(--rule)}
+.design article{padding:14px 18px 6px 0}
+.design article+article{padding-left:18px;border-left:1px solid var(--hair)}
+.design h3{font-size:15.5px;font-weight:600;margin:0 0 6px}
+.design h3 i{font-style:normal;font-family:var(--mono);font-weight:400;font-size:12px;color:var(--accent);margin-right:8px}
+.design p{margin:0;font-size:14.5px;color:var(--ink-2)}
+
+/* figures */
+.figs{display:grid;grid-template-columns:.8fr 1fr 1fr .8fr;gap:14px}
+.figs figure{margin:0}
+.figs .img{height:340px;background:var(--tint);border:1px solid var(--hair);overflow:hidden}
+.figs .img img{width:100%;height:100%;object-fit:cover}
+.figs .img.white{background:#fff}
+.figs .img.white img{object-fit:contain;padding:10px}
+figcaption{font-size:12.5px;color:var(--ink-2);line-height:1.4;margin-top:7px}
+figcaption .ref{font-family:var(--mono);color:var(--ink-3)}
+
+.drawing{margin:0}
+.drawing .frame{border:1px solid var(--hair);background:#fff}
+.drawing .detail{border:1px solid var(--hair);border-top:0;background:#fff;padding:10px 14px}
+.drawing a.dl{font-family:var(--mono);font-size:12.5px;white-space:nowrap}
+
+/* materials + timeline */
+.two{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+table{width:100%;border-collapse:collapse;font-size:14px}
+thead th{font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);text-align:left;padding:0 10px 6px 0;border-bottom:1.5px solid var(--rule)}
+tbody td{padding:7px 10px 7px 0;border-bottom:1px solid var(--hair);vertical-align:top}
+td.mat{font-family:var(--mono);font-size:13px;white-space:nowrap;font-weight:500}
+td.note{color:var(--ink-2)}
+.tl{list-style:none;margin:0;padding:0;border-top:1.5px solid var(--rule)}
+.tl li{display:grid;grid-template-columns:128px 1fr;gap:12px;padding:8px 0;border-bottom:1px solid var(--hair);font-size:14px}
+.tl time{font-family:var(--mono);font-size:12.5px;color:var(--ink-2);padding-top:1px}
+.tl b{font-weight:600}
+.tl span{color:var(--ink-2)}
+.tl li.final b{color:var(--accent)}
+
+.docs{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;border-top:1.5px solid var(--rule);padding-top:14px}
+.docs p{margin:0;font-size:14.5px;color:var(--ink-2)}
+.docs p.note{font-size:13px;color:var(--ink-3);margin-top:8px}
+
+footer{margin-top:56px;padding-top:12px;border-top:1px solid var(--rule);display:flex;flex-wrap:wrap;gap:6px 24px;justify-content:space-between;font-family:var(--mono);font-size:12px;color:var(--ink-3)}
+
+@media screen and (max-width:860px){
+  .sheet{padding:24px 18px 40px}
+  .titleblock{grid-template-columns:1fr 1fr}
+  .titleblock>div:first-child{grid-column:1/-1;border-bottom:1px solid var(--rule)}
+  .titleblock>div:nth-child(2){border-left:0}
+  h1{font-size:34px}
+  .meta span{display:block;white-space:normal}
+  .meta span+span::before{content:none}
+  .intro,.two,.docs{grid-template-columns:1fr;gap:28px}
+    .stats{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(3){border-left:0;padding-left:0}
+  .stat:nth-child(n+3){border-top:1px solid var(--hair)}
+  .design{grid-template-columns:1fr 1fr}
+  .design article:nth-child(3){border-left:0;padding-left:0}
+  .design article:nth-child(n+3){border-top:1px solid var(--hair)}
+  .figs{grid-template-columns:1fr 1fr}
+  .figs .img{height:300px}
+}
+@media screen and (max-width:520px){
+  .did{columns:1}
+  .design{grid-template-columns:1fr}
+  .design article+article{border-left:0;padding-left:0;border-top:1px solid var(--hair)}
+  .figs .img{height:220px}
+  .tl li{grid-template-columns:1fr;gap:2px}
+  td.mat{white-space:normal}
+}
+
+/* print: two A4 pages */
+@page{size:A4;margin:11mm 12mm 10mm}
+@media print{
+  body{font-size:8.6pt;line-height:1.42;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .sheet{max-width:none;padding:0;zoom:.82}
+  a{text-decoration:none}
+  .titleblock>div{padding:2.2mm 3mm}
+  .tb-name{font-size:17pt}
+  .tb-label{font-size:6.5pt;margin-bottom:1mm}
+  .tb-val{font-size:8.2pt}
+  .proj{margin-top:6.5mm}
+  .proj-no{font-size:7.5pt}
+  h1{font-size:24pt;margin:2.5mm 0 1.5mm}
+  .meta{font-size:7.8pt}
+  .intro{grid-template-columns:88mm 1fr;gap:7mm;margin-top:5mm}
+  .hero figcaption{margin-top:1mm}
+  .lead p{font-size:9.6pt;margin-bottom:2.8mm}
+  .lead p.ctx{font-size:8.2pt}
+  .stats{margin:3.5mm 0 4mm}
+  .stat{padding:2.2mm 2mm 2.2mm 0}
+  .stat+.stat{padding-left:2.5mm}
+  .stat b{font-size:12.5pt}
+  .stat small{font-size:7.4pt;margin-top:.8mm}
+  h2{font-size:7.2pt;margin-bottom:1.8mm}
+  .did{column-gap:5mm}
+  .did li{font-size:8.3pt;padding:1.1mm 0 1.1mm 3.6mm}
+  .did li::before{top:2.5mm;width:1.5mm;height:1.5mm;border-width:1px}
+  .block{margin-top:6.5mm}
+  .design article{padding:2.6mm 3.5mm 0 0}
+  .design article+article{padding-left:3.5mm}
+  .design h3{font-size:9pt;margin-bottom:1.2mm}
+  .design h3 i{font-size:7.2pt;margin-right:1.5mm}
+  .design p{font-size:8.5pt}
+  .p2{break-before:page;margin-top:0}
+  .figs{gap:3mm}
+  .figs .img{height:56mm}
+  .figs .img.white img{padding:2mm}
+  figcaption{font-size:7.4pt;margin-top:1.2mm}
+  .drawing .detail{padding:1.5mm 3mm}
+  .drawing .detail img{max-height:24mm;margin:0 auto}
+  .two{gap:7mm}
+  table{font-size:8pt}
+  thead th{font-size:6.5pt;padding-bottom:1.2mm}
+  tbody td{padding:1.2mm 2mm 1.2mm 0}
+  td.mat{font-size:7.6pt}
+  .tl li{grid-template-columns:27mm 1fr;gap:2mm;padding:1.25mm 0;font-size:8pt}
+  .tl time{font-size:7.3pt}
+  .docs{grid-template-columns:88mm 1fr;gap:7mm;padding-top:2.5mm}
+  .docs p{font-size:8.5pt}
+  .docs p.note{font-size:7.4pt;margin-top:1.2mm}
+  footer{margin-top:4mm;padding-top:1.5mm;font-size:7pt}
+  .screen-only{display:none}
+}
+</style>
+</head>
+<body>
+<div class="sheet">
+
+  <header class="titleblock">
+    <div>
+      <span class="tb-label">Name</span>
+      <div class="tb-name">Georg Müller</div>
+    </div>
+    <div>
+      <span class="tb-label">Studies</span>
+      <div class="tb-val">B.Sc. Mechanical Engineering<br>Technical University of Munich</div>
+    </div>
+    <div>
+      <span class="tb-label">Document</span>
+      <div class="tb-val">Project portfolio<br>Updated November 2026<span class="screen-only"> · <a href="assets/docs/Georg_Mueller_Portfolio.pdf">PDF</a></span></div>
+    </div>
+  </header>
+
+  <!-- Project 01. To add a project, copy this <section> and change the number. -->
+  <section class="proj" id="wine-press">
+    <div class="proj-no">Project 01 · Apprenticeship final project</div>
+    <h1>Hydraulic wine press</h1>
+    <p class="meta"><span>Journeyman's piece, Austrian apprenticeship exam in mechanical engineering</span> <span>Werkschulheim Felbertal, Salzburg</span> <span>Sep 2021 to Jul 2022</span></p>
+
+    <div class="intro">
+      <figure class="hero">
+        <img src="assets/img/press-photo.jpg" width="1275" height="1700" alt="Photo of the finished wine press: black columns on splayed feet, red press head with the hydraulic cylinder, stainless basket with a pressing bag on the red cross grid, hand pump on the right column.">
+        <figcaption>The finished press</figcaption>
+      </figure>
+
+      <div class="lead">
+        <p>For the final exam of my apprenticeship I designed and built a hand-operated hydraulic press for grapes and fruit mash. I worked on it alone for ten months. I made the SolidWorks model and the full drawing set, wrote the CNC programs in CAMWorks and did the machining, welding, painting and assembly in the school workshop.</p>
+        <p>Basket, collecting tray and the hydraulics (hand pump, cylinder, hose) are bought parts. Frame, press head, cross grid, pins and plates are my own design, and I made them myself.</p>
+        <p class="ctx">I did the apprenticeship alongside the Austrian upper secondary school diploma (Matura) at Werkschulheim Felbertal. The final exam is built around a machine each apprentice designs and makes on their own.</p>
+
+        <div class="stats">
+          <div class="stat"><b>25 kN</b><small>press force at 240 bar</small></div>
+          <div class="stat"><b>18 L</b><small>basket volume</small></div>
+          <div class="stat"><b>1985 mm</b><small>height, about 130 kg</small></div>
+          <div class="stat"><b>400 mm</b><small>cylinder stroke, 3 working heights</small></div>
+        </div>
+
+        <h2>My part</h2>
+        <ul class="did">
+          <li>Concept and SolidWorks model</li>
+          <li>A0 assembly drawing, part drawings</li>
+          <li>CNC programming in CAMWorks</li>
+          <li>Turning, milling, welding</li>
+          <li>Painting, assembly, hydraulics</li>
+          <li>Project plan, cost calculation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Design decisions</h2>
+      <div class="design">
+        <article>
+          <h3><i>A</i>Force path</h3>
+          <p>The cylinder sits in the press head and pushes down on the mash. The reaction goes through the lower press plate into a welded cross grid, and two Ø40 mm pins carry it into the columns (80 × 80 mm hollow sections). A spacer rod between the columns keeps the frame from racking.</p>
+        </article>
+        <article>
+          <h3><i>B</i>Adjustable height</h3>
+          <p>The cross grid can be pinned in three positions, 150 mm apart. Together with the 400 mm cylinder stroke this works for a full 18 L basket and for small batches.</p>
+        </article>
+        <article>
+          <h3><i>C</i>Food contact</h3>
+          <p>Parts that touch the mash are unpainted and come off for cleaning. The basket is stainless steel (X2CrNi19-11). The plate on the cylinder has a raised rim, so oil from a leaking seal or hose does not run straight into the juice.</p>
+        </article>
+        <article>
+          <h3><i>D</i>Second use</h3>
+          <p>With basket and tray removed it is a 2.5 t workshop press, for example for pressing bearings in or out. Welded feet with side plates keep the 2 m frame from tipping.</p>
+        </article>
+      </div>
+    </div>
+
+    <div class="block docs">
+      <h2>Documentation</h2>
+      <div>
+        <p>Besides the drawings I wrote a 35-page project folder with operating manual, cleaning and maintenance instructions, a troubleshooting guide, the torque table and a full cost calculation. Work breakdown, milestones, resource plan and Gantt chart are in a separate project handbook. The material budget was about €1,000.</p>
+      </div>
+    </div>
+    <div class="block p2">
+      <h2>From model to machine</h2>
+      <div class="figs">
+        <figure>
+          <div class="img white"><img src="assets/img/press.jpg" width="940" height="1800" alt="Isometric CAD view of the press from the assembly drawing."></div>
+          <figcaption>CAD model in SolidWorks</figcaption>
+        </figure>
+        <figure>
+          <div class="img white"><img src="assets/img/exploded.jpg" width="761" height="867" alt="Exploded view of the whole press showing columns, feet, cross grid, basket, cylinder, press head and hand pump as separate parts."></div>
+          <figcaption>Exploded view of the main assembly</figcaption>
+        </figure>
+        <figure>
+          <div class="img"><img src="assets/img/press-head.jpg" width="1052" height="1015" alt="Rendering of the press head: two flat bars with spacer bushings and bolts, a plate holding the cylinder, two vertical rods with a cross pin."></div>
+          <figcaption>Press head, rendering <span class="ref">01-03</span></figcaption>
+        </figure>
+        <figure>
+          <div class="img"><img src="assets/img/press-head-photo.jpg" width="1050" height="1400" alt="Close-up photo of the built press head: red cylinder between two black rods, bolted red flat bars, hydraulic hose with spiral guard at the cylinder port."></div>
+          <figcaption>Press head, built</figcaption>
+        </figure>
+      </div>
+    </div>
+
+    <div class="block">
+      <h2>Assembly drawing</h2>
+      <figure class="drawing">
+        <div class="frame"><a href="assets/docs/wine-press-assembly-drawing-A0.pdf"><img src="assets/img/drawing.jpg" width="2600" height="1839" alt="A0 assembly drawing of the wine press with front, side and top views, sections, details and a 27-item parts list."></a></div>
+        <div class="detail screen-only"><img src="assets/img/drawing-detail.png" width="2400" height="611" alt="Drawing details: section A-A through the cross grid, detail Z of the welded grid, detail Y of the cylinder mount."></div>
+        <figcaption>Drawing 01-00-00, A0, scale 1:5, general tolerances ISO 2768-m, parts list with 27 items in five subassemblies. <span class="screen-only">Close-up: section A-A and detail Z through the welded cross grid, detail Y at the cylinder mount.</span> <a class="dl screen-only" href="assets/docs/wine-press-assembly-drawing-A0.pdf">Full drawing (PDF)</a></figcaption>
+      </figure>
+    </div>
+
+    <div class="block two">
+      <div>
+        <h2>Materials</h2>
+        <table>
+          <thead><tr><th>Part</th><th>Material</th><th>Semi-finished product</th></tr></thead>
+          <tbody>
+            <tr><td>Columns</td><td class="mat">S235JR</td><td class="note">Hollow section 80 × 80, EN 10210-2</td></tr>
+            <tr><td>Feet, side and holder plates</td><td class="mat">S235JR</td><td class="note">Plate, welded</td></tr>
+            <tr><td>Locking pins Ø40, centring pin Ø30</td><td class="mat">S355JR</td><td class="note">Round bar, turned</td></tr>
+            <tr><td>Spacer rod Ø20</td><td class="mat">16MnCr5</td><td class="note">Round bar, turned</td></tr>
+            <tr><td>Basket (bought)</td><td class="mat">X2CrNi19-11</td><td class="note">Stainless, food contact</td></tr>
+            <tr><td>Bolts M8 to M16</td><td class="mat">8.8 / 10.9</td><td class="note">Torque table, M16 at 302 Nm</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <h2>Timeline</h2>
+        <ol class="tl">
+          <li><time>Sep–Dec 2021</time><div><b>Planning.</b> <span>Sketches, SolidWorks model, A0 drawing, project plan</span></div></li>
+          <li><time>Dec 2021</time><div><b>Project week.</b> <span>Part drawings, project folder</span></div></li>
+          <li><time>Dec 2021–Jan 2022</time><div><b>Trials.</b> <span>Test milling and turning, welding test piece</span></div></li>
+          <li><time>Jan–Jun 2022</time><div><b>Pre-production.</b> <span>Material, CAM programs, CNC parts, welded subassemblies, shafts and pins</span></div></li>
+          <li class="final"><time>20 Jun–1 Jul 2022</time><div><b>Exam weeks.</b> <span>Final machining, drilling, reaming, painting, assembly, presentation</span></div></li>
+        </ol>
+      </div>
+    </div>
+
+  </section>
+
+  <footer>
+    <span>Georg Müller · Munich</span>
+    <span>Photos of the built press, renderings and drawings by me</span>
+  </footer>
+</div>
+</body>
+</html>
